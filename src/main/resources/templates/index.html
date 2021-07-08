@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Accept a card payment</title>
+    <meta name="description" content="A demo of a card payment on Stripe" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="global.css" />
+
+</head>
+
+<body>
+<!-- Display a payment form -->
+<form id="payment-form" method="post" th:object="${formCheckout}" th:action="@{/}">
+   <p> Email <input type="text" th:field="*{email}" placeholder="Email address" required/> </p>
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></p>
+   <p> Amount <input type="text" th:field="*{amount}" placeholder="Amount" required/> </p>
+    <p th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" style="color: red"></p>
+   <p> Request things <input type="text" th:field="*{requestThings}" placeholder="things" required/> </p>
+    <p th:if="${#fields.hasErrors('requestThings')}" th:errors="*{requestThings}" style="color: red"></p>
+    <p> <input type="submit"/></p>
+</form>
+</body>
+</html>
